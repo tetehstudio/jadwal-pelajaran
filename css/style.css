@@ -1,217 +1,66 @@
-/* ================= GLOBAL ================= */
-body {
+/* =========================================================
+   GLOBAL
+========================================================= */
+body{
   background:#f3f6fb;
-  font-family: 'Segoe UI', sans-serif;
+  font-family:'Segoe UI',sans-serif;
   margin:0;
 }
 
-/* ================= SIDEBAR ================= */
-.sidebar {
+a{
+  text-decoration:none;
+}
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+.sidebar{
   width:240px;
   height:100vh;
   position:fixed;
   left:0;
   top:0;
-  background: linear-gradient(180deg,#0f9b8e,#1abc9c);
+  background:linear-gradient(180deg,#0f9b8e,#1abc9c);
   color:white;
   padding:20px;
   overflow-y:auto;
 }
 
-.sidebar h4 {
+.sidebar h4{
   text-align:center;
   margin-bottom:30px;
 }
 
-.sidebar a {
+.sidebar a{
   display:block;
   padding:10px;
   border-radius:8px;
   color:white;
-  text-decoration:none;
   margin-bottom:10px;
-  transition:0.3s;
+  transition:all .3s ease;
 }
 
-.sidebar a:hover,
-.sidebar a.active {
-  background: rgba(255,255,255,0.2);
+.sidebar a:hover{
+  background:rgba(255,255,255,.2);
   padding-left:15px;
 }
 
-/* ================= CONTENT ================= */
-.content {
-  margin-left:240px;
-  padding:20px;
-  width: calc(100% - 240px);
-  box-sizing:border-box;
-}
-
-/* ================= HEADER ================= */
-.header-modern {
-  background: linear-gradient(135deg,#0f9b8e,#1abc9c);
-  color:white;
-  border-radius:16px;
-  padding:15px 20px;
-}
-
-/* LOGO */
-.logo-modern {
-  width:60px;
-  height:60px;
-  border-radius:12px;
-  object-fit:cover;
-  background:white;
-  padding:5px;
-}
-
-/* ================= KEPSEK ================= */
-.kepsek-box {
-  min-width: 180px;
-  background: rgba(255,255,255,0.15);
-  padding: 15px;
-  border-radius: 12px;
-}
-
-.kepsek-icon {
-  font-size:45px;
-  margin-bottom:8px;
-}
-
-.kepsek-label {
-  font-size:12px;
-  opacity:0.8;
-  margin-bottom:4px;
-}
-
-.kepsek-nama {
-  font-size:14px;
+.sidebar a.active{
+  background:rgba(255,255,255,.25);
   font-weight:bold;
 }
 
-/* ================= CARD ================= */
-.card {
-  border-radius:12px;
-  width:100%;
-  overflow:hidden;
-  box-shadow:0 4px 10px rgba(0,0,0,0.05);
-}
-
-/* ================= STATISTIK ================= */
-.stat-card {
-  background:white;
-  border-radius:12px;
-  padding:12px;
-  text-align:center;
-  transition:0.3s;
-}
-
-.stat-card:hover {
-  transform:translateY(-3px);
-}
-
-.stat-card .icon {
-  font-size:22px;
-  margin-bottom:5px;
-}
-
-.stat-card h3 {
-  font-size:18px;
-  margin:0;
-  font-weight:bold;
-}
-
-/* ================= CHART ================= */
-#chartStat {
-  max-height:150px !important;
-}
-
-/* ================= JADWAL ================= */
-#jadwalHariIni {
-  font-size:13px;
-}
-
-/* ================= GRID FIX ================= */
-.row {
-  margin-left:0;
-  margin-right:0;
-}
-
-/* ================= FIX OVERFLOW DASHBOARD ================= */
-
-/* paksa semua isi content tidak keluar */
-.content {
-  margin-left:240px;
-  width: calc(100% - 240px);
-  max-width: calc(100% - 240px);
-  overflow-x:hidden;
-}
-
-/* cegah card melebar */
-.content .card {
-  width:100%;
-  max-width:100%;
-}
-
-/* bootstrap row sering bikin melebar */
-.content .row {
-  margin-left:0 !important;
-  margin-right:0 !important;
-}
-
-/* semua container harus ikut batas */
-.content > * {
-  max-width:100%;
-}
-
-/* canvas chart biar tidak liar */
-#chartStat {
-  width:100% !important;
-  max-width:100%;
-}
-
-/* ================= BRAND SIDEBAR ================= */
-
-.brand-box {
-  border-bottom:1px solid rgba(255,255,255,0.2);
+/* =========================================================
+   BRAND SIDEBAR
+========================================================= */
+.brand-box{
+  border-bottom:1px solid rgba(255,255,255,.2);
   padding-bottom:15px;
 }
 
-.brand-logo {
+.brand-logo{
   font-size:40px;
   margin-bottom:10px;
-}
-
-.brand-title {
-  font-weight:bold;
-  font-size:16px;
-  letter-spacing:0.5px;
-}
-
-.brand-sub {
-  font-size:12px;
-  opacity:0.8;
-}
-
-/* HOVER MENU LEBIH HALUS */
-.sidebar a {
-  display:block;
-  padding:10px;
-  border-radius:8px;
-  color:white;
-  text-decoration:none;
-  margin-bottom:10px;
-  transition: all 0.3s ease;
-}
-
-.sidebar a:hover {
-  background: rgba(255,255,255,0.2);
-  padding-left:15px;
-}
-
-.sidebar a.active {
-  background: rgba(255,255,255,0.25);
-  font-weight:bold;
 }
 
 .brand-img{
@@ -222,10 +71,286 @@ body {
   margin-bottom:10px;
 }
 
+.brand-title{
+  font-size:16px;
+  font-weight:bold;
+  letter-spacing:.5px;
+}
+
+.brand-sub{
+  font-size:12px;
+  opacity:.8;
+}
+
+/* =========================================================
+   CONTENT
+========================================================= */
+.content{
+  margin-left:240px;
+  padding:20px;
+  width:calc(100% - 240px);
+  max-width:calc(100% - 240px);
+  box-sizing:border-box;
+  overflow-x:hidden;
+}
+
+.content > *{
+  max-width:100%;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+.header-modern{
+  background:linear-gradient(135deg,#0f9b8e,#1abc9c);
+  color:white;
+  border-radius:16px;
+  padding:20px 30px;
+}
+
+.header-card{
+  padding:20px 30px;
+}
+
+/* =========================================================
+   LOGO
+========================================================= */
+.logo-modern{
+  width:60px;
+  height:60px;
+  border-radius:12px;
+  object-fit:cover;
+  background:white;
+  padding:5px;
+}
+
+/* =========================================================
+   RUNNING TEXT
+========================================================= */
+.running-text{
+  width:100%;
+  overflow:hidden;
+  background:#0f9b8e;
+  color:white;
+  border-radius:10px;
+  margin-bottom:15px;
+}
+
+.running-content{
+  display:inline-block;
+  white-space:nowrap;
+  padding-left:100%;
+  animation:jalan 15s linear infinite;
+  font-weight:600;
+}
+
+.running-text:hover .running-content{
+  animation-play-state:paused;
+}
+
+@keyframes jalan{
+  0%{
+    transform:translateX(0);
+  }
+
+  100%{
+    transform:translateX(-100%);
+  }
+}
+
+/* =========================================================
+   KEPSEK
+========================================================= */
+.kepsek-box{
+  min-width:180px;
+  text-align:center;
+  background:rgba(255,255,255,.15);
+  padding:15px;
+  border-radius:12px;
+}
+
+.kepsek-icon{
+  font-size:45px;
+  margin-bottom:8px;
+}
+
+.kepsek-label{
+  font-size:12px;
+  opacity:.8;
+  margin-bottom:4px;
+}
+
+.kepsek-nama{
+  font-size:14px;
+  font-weight:bold;
+}
+
+.box-kepsek{
+  min-width:180px;
+  background:rgba(255,255,255,.15);
+  padding:15px;
+  border-radius:12px;
+}
+
+/* =========================================================
+   CARD
+========================================================= */
+.card{
+  border-radius:12px;
+  width:100%;
+  overflow:hidden;
+  box-shadow:0 4px 10px rgba(0,0,0,.05);
+}
+
+.stat-card{
+  background:white;
+  border-radius:12px;
+  padding:12px;
+  text-align:center;
+  transition:.3s;
+}
+
+.stat-card:hover{
+  transform:translateY(-3px);
+}
+
+.stat-card .icon{
+  font-size:22px;
+  margin-bottom:5px;
+}
+
+.stat-card h3{
+  font-size:18px;
+  margin:0;
+  font-weight:bold;
+}
+
+/* =========================================================
+   CARD BOX
+========================================================= */
+.card-box{
+  background:white;
+  border-radius:15px;
+  padding:20px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* =========================================================
+   FORM CARD
+========================================================= */
+.card-form{
+  background:white;
+  border-radius:15px;
+  padding:25px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* =========================================================
+   MENU CARD (MASTER DATA)
+========================================================= */
+.menu-card{
+  background:white;
+  border-radius:15px;
+  padding:25px;
+  text-align:center;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+  transition:.3s;
+  cursor:pointer;
+}
+
+.menu-card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+.menu-icon{
+  font-size:40px;
+  margin-bottom:10px;
+}
+
+/* =========================================================
+   TABLE HOVER
+========================================================= */
+.table-hover tbody tr:hover{
+  background:#e8f8f5;
+}
+
+/* =========================================================
+   TABLE JADWAL
+========================================================= */
+td{
+  height:55px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+td:hover{
+  background:#e8f8f5;
+}
+
+.grid-table td{
+  font-size:11px;
+  vertical-align:middle;
+}
+
+/* DRAG DROP */
+td[draggable="true"]{
+  background:#fff3cd;
+}
+
+td.dragging{
+  opacity:.5;
+}
+
+/* =========================================================
+   HEADER CARD LAMA
+========================================================= */
+.header-card{
+  background:linear-gradient(90deg,#16a085,#1abc9c);
+  color:white;
+  border-radius:15px;
+  padding:20px;
+  display:flex;
+  align-items:center;
+  gap:15px;
+  transition:.3s;
+}
+
+.header-card:hover{
+  transform:scale(1.01);
+}
+
+/* =========================================================
+   LOGO PREVIEW IDENTITAS
+========================================================= */
+.logo-preview{
+  width:100px;
+  height:100px;
+  object-fit:cover;
+  border-radius:10px;
+  border:2px dashed #ccc;
+}
+
+/* =========================================================
+   CHART
+========================================================= */
+#chartStat{
+  width:100% !important;
+  max-width:100%;
+  max-height:150px !important;
+}
+
+/* =========================================================
+   JADWAL HARI INI
+========================================================= */
+#jadwalHariIni{
+  font-size:13px;
+}
+
 .jadwal-item{
   background:#f8f9fa;
   border-radius:10px;
-  transition:0.2s;
+  transition:.2s;
 }
 
 .jadwal-item:hover{
@@ -236,16 +361,17 @@ body {
   font-size:12px;
 }
 
-/* ===== JADWAL MOBILE STYLE ===== */
-
+/* =========================================================
+   JADWAL CARD
+========================================================= */
 .jadwal-card{
   display:flex;
   align-items:center;
   background:white;
   border-radius:15px;
   padding:15px;
-  box-shadow:0 4px 10px rgba(0,0,0,0.08);
-  transition:0.2s;
+  box-shadow:0 4px 10px rgba(0,0,0,.08);
+  transition:.2s;
 }
 
 .jadwal-card:hover{
@@ -273,7 +399,7 @@ body {
 
 .label{
   font-size:10px;
-  opacity:0.8;
+  opacity:.8;
 }
 
 /* isi utama */
@@ -282,8 +408,8 @@ body {
 }
 
 .mapel{
-  font-weight:bold;
-  font-size:15px;
+  font-size:11px;
+  font-weight:600;
 }
 
 .kelas{
@@ -291,7 +417,9 @@ body {
   color:#777;
 }
 
-/* GRID */
+/* =========================================================
+   GRID JADWAL
+========================================================= */
 .jadwal-grid-wrapper{
   overflow-x:auto;
 }
@@ -320,16 +448,10 @@ body {
   position:relative;
 }
 
-.mapel{
-  font-size:11px;
-  font-weight:600;
-}
-
-/* hover */
 .cell-mapel:hover{
   background:#e8f8f5;
   transform:scale(1.03);
-  transition:0.2s;
+  transition:.2s;
 }
 
 .kosong{
@@ -341,76 +463,53 @@ td[rowspan]{
   font-weight:bold;
 }
 
-/* 🔥 hover 1 grup FULL BARIS */
+/* hover satu grup */
 tr.hover-group,
 tr.hover-group td{
   background:#e8f8f5 !important;
-  box-shadow: inset 0 0 0 1px #1abc9c;
+  box-shadow:inset 0 0 0 1px #1abc9c;
 }
 
 .nama-guru.hover-group,
-.hover-group .nama-guru {
+.hover-group .nama-guru{
   background:#d1f2eb !important;
 }
 
-.header-card{
-  padding: 20px 30px; /* kiri kanan sama */
-}
-
-.box-kepsek{
-  min-width: 180px;
-  background: rgba(255,255,255,0.15);
-  padding: 15px;
-  border-radius: 12px;
-}
-
-/* RUNNING TEXT */
-.running-text{
+/* =========================================================
+   TABLE
+========================================================= */
+table{
   width:100%;
-  overflow:hidden;
-  background:#0f9b8e;
-  color:white;
-  border-radius:10px;
-  margin-bottom:15px;
 }
 
-.running-content{
-  display:inline-block;
-  white-space:nowrap;
-  padding-left:100%;
-  animation: jalan 15s linear infinite;
-  font-weight:600;
+td,
+th{
+  vertical-align:middle;
 }
 
-.running-text:hover .running-content{
-  animation-play-state: paused;
+/* =========================================================
+   GRID FIX
+========================================================= */
+.row{
+  margin-left:0 !important;
+  margin-right:0 !important;
 }
 
-@keyframes jalan{
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
+.content .card{
+  width:100%;
+  max-width:100%;
 }
 
-/* PERBAIKI HEADER BIAR SIMETRIS */
-.header-modern{
-  padding:20px 30px; /* kiri kanan sama */
-}
-
-.kepsek-box{
-  text-align:center;
-  background: rgba(255,255,255,0.15);
-  padding:12px;
-  border-radius:12px;
-}
-
-/* ================= MOBILE RESPONSIVE ================= */
+/* =========================================================
+   MOBILE RESPONSIVE
+========================================================= */
 @media(max-width:768px){
 
   /* SIDEBAR */
   .sidebar{
-    position:relative;
     width:100%;
     height:auto;
+    position:relative;
     padding:15px;
   }
 
@@ -422,6 +521,8 @@ tr.hover-group td{
   /* CONTENT */
   .content{
     margin-left:0;
+    width:100%;
+    max-width:100%;
     padding:10px;
   }
 
@@ -431,45 +532,13 @@ tr.hover-group td{
   }
 
   .header-modern .row{
+    flex-direction:column;
     text-align:center;
   }
 
+  /* KEPSEK */
   .kepsek-box{
     margin-top:15px;
-  }
-
-  /* CARD */
-  .stat-card{
-    padding:10px;
-  }
-
-  .stat-card h3{
-    font-size:18px;
-  }
-
-  /* GRID JADWAL */
-  table{
-    font-size:10px;
-  }
-
-  td, th{
-    padding:4px !important;
-    white-space:nowrap;
-  }
-
-  /* SCROLL TABLE */
-  #grid{
-    overflow-x:auto;
-  }
-
-  /* MODAL */
-  .modal-dialog{
-    margin:10px;
-  }
-
-  /* BUTTON */
-  .btn{
-    font-size:12px;
   }
 
   /* LOGO */
@@ -479,9 +548,54 @@ tr.hover-group td{
     height:50px;
   }
 
+  /* CARD */
+  .stat-card{
+    margin-bottom:10px;
+  }
+
+  .stat-card h3{
+    font-size:18px;
+  }
+
+  /* TABLE */
+  #grid{
+    overflow-x:auto;
+  }
+
+  table{
+    min-width:900px;
+  }
+
+  td,
+  th{
+    white-space:nowrap;
+    font-size:11px !important;
+    padding:4px !important;
+  }
+
+  /* BUTTON */
+  .btn{
+    font-size:12px;
+  }
+
   /* RUNNING TEXT */
   .running-text{
     font-size:12px;
+  }
+
+  /* MODAL */
+  .modal-dialog{
+    margin:10px;
+  }
+
+}
+
+/* ===== MOBILE KEPSEK CENTER ===== */
+@media(max-width:768px){
+
+  .kepsek-box{
+    margin:15px auto 0 auto !important;
+    width:fit-content;
   }
 
 }
