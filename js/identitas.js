@@ -30,7 +30,23 @@ function simpan(){
 
   localStorage.setItem("identitas", JSON.stringify(data));
 
-  alert("✅ Data tersimpan");
+// ================= UPDATE LOGO REALTIME =================
+
+// logo sidebar
+let brandLogo = document.getElementById("brandLogo");
+
+if(brandLogo && data.logo){
+  brandLogo.src = data.logo;
+}
+
+// logo preview
+let previewLogo = document.getElementById("previewLogo");
+
+if(previewLogo && data.logo){
+  previewLogo.src = data.logo;
+}
+
+alert("✅ Data tersimpan");
 }
 
 function loadData(){

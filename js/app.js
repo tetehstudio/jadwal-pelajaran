@@ -63,3 +63,19 @@ function resetData(){
 
 // global
 window.resetData = resetData;
+
+// ================= LOAD BRAND LOGO =================
+
+document.addEventListener("DOMContentLoaded", function(){
+
+  let identitas = JSON.parse(localStorage.getItem("identitas")) || {};
+
+  let logo = document.getElementById("brandLogo");
+
+  if(logo){
+
+    logo.src = identitas.logo || "../assets/logo.png";
+
+  }
+
+});
