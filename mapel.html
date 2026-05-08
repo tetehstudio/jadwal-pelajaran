@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Data Mata Pelajaran</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../css/style.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body{
+  background:#f3f6fb;
+  font-family:'Segoe UI',sans-serif;
+}
+
+.sidebar{
+  width:240px;
+  height:100vh;
+  position:fixed;
+  background:linear-gradient(180deg,#0f9b8e,#1abc9c);
+  color:white;
+  padding:20px;
+}
+
+.sidebar a{
+  display:block;
+  padding:10px;
+  border-radius:8px;
+  color:white;
+  text-decoration:none;
+  margin-bottom:10px;
+}
+
+.sidebar a:hover,
+.sidebar a.active{
+  background:rgba(255,255,255,0.2);
+}
+
+.content{
+  margin-left:260px;
+  padding:20px;
+}
+
+.card-box{
+  background:white;
+  border-radius:15px;
+  padding:20px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+.table-hover tbody tr:hover{
+  background:#e8f8f5;
+}
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+
+  <!-- BRAND -->
+  <div class="brand-box text-center mb-4">
+    <img id="brandLogo" class="brand-img">
+    <div class="brand-title">Jadwal Pelajaran</div>
+    <div class="brand-sub">Anti Bentrok</div>
+  </div>
+
+  <!-- MENU -->
+  <a href="index.html">🏠 Beranda</a>
+  <a href="identitas.html">🏫 Identitas</a>
+  <a href="master.html" class="active">📚 Master Data</a>
+  <a href="jadwal.html">📅 Atur Jadwal</a>
+
+  <!-- TOMBOL DONASI -->
+  <a href="https://saweria.co/tetehstudio"
+     target="_blank"
+     class="btn btn-warning btn-sm">
+     💖 Donasi
+  </a>
+</div>
+
+<div class="content">
+
+<h4 class="mb-3">📘 Data Mata Pelajaran</h4>
+
+<!-- INPUT -->
+<div class="card-box mb-3">
+<div class="row g-2">
+
+<div class="col-md-8">
+<input id="inputMapel" class="form-control" placeholder="Contoh: IPA">
+</div>
+
+<div class="col-md-4 d-grid">
+<button class="btn btn-success" onclick="tambahMapel()">➕ Tambah</button>
+</div>
+
+<div class="col-md-12">
+<div id="notif" class="fw-bold"></div>
+</div>
+
+</div>
+</div>
+
+<!-- SEARCH -->
+<div class="card-box mb-3">
+<input id="search" class="form-control" placeholder="🔍 Cari mapel..." oninput="render()">
+</div>
+
+<!-- TABLE -->
+<div class="card-box">
+
+<table class="table table-bordered table-hover">
+<thead class="table-light">
+<tr>
+<th width="50">No</th>
+<th>Nama Mata Pelajaran</th>
+<th width="100">Aksi</th>
+</tr>
+</thead>
+
+<tbody id="tabelMapel"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<script>
+
+// DATA
+let mapel = JSON.parse(localStorage.getItem("mapel")) || [];
+
+// NORMAL
+function norm(v){
+  return v.trim().toLowerCase();
+}
+
+// SORT A-Z
+function sortMapel(){
+  mapel.sort((a,b)=> a.localeCompare(b,'id'));
+}
+
+// TAMBAH
+function tambahMapel(){
+
+  let input = document.getElementById("inputMapel");
+  let nama = input.value.trim();
+
+  if(!nama){
+    notif("❗ Isi nama mapel","danger");
+    return;
+  }
+
+  if(mapel.some(m => norm(m) === norm(nama))){
+    notif("❌ Mapel sudah ada","danger");
+    return;
+  }
+
+  mapel.push(nama);
+  sortMapel();
+
+  localStorage.setItem("mapel", JSON.stringify(mapel));
+
+  input.value="";
+  notif("✅ Berhasil ditambahkan","success");
+
+  render();
+}
+
+// HAPUS (AMAN INDEX)
+function hapus(nama){
+
+  if(!confirm("Hapus mapel?")) return;
+
+  mapel = mapel.filter(m => m !== nama);
+
+  localStorage.setItem("mapel", JSON.stringify(mapel));
+
+  render();
+}
+
+// NOTIF
+function notif(text,type){
+  let el = document.getElementById("notif");
+  el.innerHTML = `<span class="text-${type}">${text}</span>`;
+  setTimeout(()=> el.innerHTML="",2000);
+}
+
+// RENDER
+function render(){
+
+  sortMapel();
+
+  let keyword = document.getElementById("search").value.toLowerCase();
+
+  let data = mapel.filter(m => m.toLowerCase().includes(keyword));
+
+  let html="";
+
+  data.forEach((m,i)=>{
+    html+=`
+    <tr>
+      <td>${i+1}</td>
+      <td>${m}</td>
+      <td>
+        <button class="btn btn-danger btn-sm" onclick="hapus('${m}')">Hapus</button>
+      </td>
+    </tr>
+    `;
+  });
+
+  document.getElementById("tabelMapel").innerHTML = html;
+}
+
+// ENTER
+document.getElementById("inputMapel").addEventListener("keypress",function(e){
+  if(e.key==="Enter") tambahMapel();
+});
+
+// INIT
+render();
+
+</script>
+<script src="../js/app.js"></script>
+<script src="../js/dashboard.js"></script>
+</body>
+</html>

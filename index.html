@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="theme-color" content="#16a085">
+<meta name="description" content="Aplikasi Jadwal Pelajaran Anti Bentrok">
+<link rel="icon" href="../assets/logo.png">
+<title>Dashboard Jadwal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../css/style.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body {
+  background:#f3f6fb;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 240px;
+  height: 100vh;
+  position: fixed;
+  background: linear-gradient(180deg,#0f9b8e,#1abc9c);
+  color: white;
+  padding: 20px;
+}
+
+.sidebar h4 {
+  text-align:center;
+  margin-bottom: 30px;
+}
+
+.sidebar a {
+  display:block;
+  padding:10px;
+  border-radius:8px;
+  color:white;
+  text-decoration:none;
+  margin-bottom:10px;
+  transition:0.3s;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+  background: rgba(255,255,255,0.2);
+  padding-left:15px;
+}
+
+/* CONTENT */
+.content {
+  margin-left:260px;
+  padding:20px;
+}
+
+/* HEADER */
+.header-card {
+  background: linear-gradient(90deg,#16a085,#1abc9c);
+  color:white;
+  border-radius:15px;
+  padding:20px;
+  display:flex;
+  align-items:center;
+  gap:15px;
+  transition:0.3s;
+}
+
+.header-card:hover {
+  transform:scale(1.01);
+}
+
+/* CARD */
+.stat-card {
+  border-radius:15px;
+  padding:20px;
+  background:white;
+  box-shadow:0 4px 10px rgba(0,0,0,0.05);
+  transition:0.3s;
+}
+
+.stat-card:hover {
+  transform:translateY(-5px);
+}
+
+.stat-card h3 {
+  margin:0;
+  font-weight:bold;
+}
+
+/* Logo */
+.logo-modern{
+  width:60px;
+  height:60px;
+  object-fit:cover;
+  border-radius:12px;
+}
+
+.header-modern{
+  background: linear-gradient(90deg,#16a085,#1abc9c);
+  border-radius:15px;
+  padding:20px;
+  color:white;
+}
+
+.header-modern {
+  background: linear-gradient(135deg,#0f9b8e,#1abc9c);
+  color:white;
+  border-radius:16px;
+  padding:15px 20px;
+}
+
+.logo-modern {
+  width:70px;
+  height:70px;
+  border-radius:12px;
+  object-fit:cover;
+  background:white;
+  padding:5px;
+}
+
+.kepsek-box {
+  text-align:center;
+}
+
+.kepsek-icon {
+  font-size:60px;
+  line-height:1;
+}
+
+.stat-card {
+  padding:12px;
+}
+
+.stat-card h3 {
+  font-size:20px;
+}
+
+.stat-card .icon {
+  font-size:22px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+
+  <!-- BRAND -->
+  <div class="brand-box text-center mb-4">
+    <img id="brandLogo" class="brand-img">
+    <div class="brand-title">Jadwal Pelajaran</div>
+    <div class="brand-sub">Anti Bentrok</div>
+  </div>
+
+  <!-- MENU -->
+  <a href="index.html" class="active">🏠 Beranda</a>
+  <a href="identitas.html">🏫 Identitas</a>
+  <a href="master.html">📚 Master Data</a>
+  <a href="jadwal.html">📅 Atur Jadwal</a>
+
+  <!-- TOMBOL DONASI -->
+  <a href="https://saweria.co/tetehstudio"
+     target="_blank"
+     class="btn btn-warning btn-sm">
+     💖 Donasi
+  </a>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+<h4 class="mb-3">🏠 Beranda</h4>
+
+<!-- HEADER -->
+<div class="header-modern mb-3">
+  <div class="row align-items-center">
+
+    <!-- KIRI -->
+    <div class="col-md-9 d-flex align-items-center gap-3">
+
+      <div>
+        <h5 id="nama" class="mb-1 fw-bold"></h5>
+        <div id="tahun" class="small"></div>
+        <div id="alamat" class="small"></div>
+      </div>
+    </div>
+
+    <!-- KANAN -->
+    <div class="col-md-3 d-flex justify-content-end">
+      <div class="kepsek-box">
+        <div class="kepsek-icon">👨‍💼</div>
+        <div class="small">Kepala:</div>
+        <div id="kepsek" class="fw-bold"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- STATISTIK -->
+ <div class="running-text">
+  <div class="running-content" id="runningText"></div>
+</div>
+<div class="row g-2">
+
+  <div class="col-4">
+    <div class="stat-card text-center">
+      <div class="icon">👨‍🏫</div>
+      <div class="small">Guru</div>
+      <h3 id="totalGuru">0</h3>
+    </div>
+  </div>
+
+  <div class="col-4">
+    <div class="stat-card text-center">
+      <div class="icon">🏫</div>
+      <div class="small">Kelas</div>
+      <h3 id="totalKelas">0</h3>
+    </div>
+  </div>
+
+  <div class="col-4">
+    <div class="stat-card text-center">
+      <div class="icon">📅</div>
+      <div class="small">Jadwal</div>
+      <h3 id="totalJadwal">0</h3>
+    </div>
+  </div>
+
+</div>
+
+<!-- GRAFIK -->
+<div class="card mt-3 p-2">
+  <h6 class="mb-2">Statistik Data</h6>
+  <canvas id="chartStat"></canvas>
+</div>
+
+<div class="card mt-3 p-2">
+  <h6>📌 Jadwal Hari Ini</h6>
+  <div id="jadwalHariIni"></div>
+</div>
+
+</div>
+
+
+<!-- SCRIPT (HARUS DI BAWAH) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="../js/app.js"></script>
+<script src="../js/dashboard.js"></script>
+
+</body>
+</html>

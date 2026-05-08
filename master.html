@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Master Data</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../css/style.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body {
+  background:#f3f6fb;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width:240px;
+  height:100vh;
+  position:fixed;
+  background:linear-gradient(180deg,#0f9b8e,#1abc9c);
+  color:white;
+  padding:20px;
+}
+
+.sidebar h4 {
+  text-align:center;
+  margin-bottom:30px;
+}
+
+.sidebar a {
+  display:block;
+  padding:10px;
+  border-radius:8px;
+  color:white;
+  text-decoration:none;
+  margin-bottom:10px;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+  background:rgba(255,255,255,0.2);
+}
+
+/* CONTENT */
+.content {
+  margin-left:260px;
+  padding:20px;
+}
+
+/* CARD MENU */
+.menu-card {
+  background:white;
+  border-radius:15px;
+  padding:25px;
+  text-align:center;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+  transition:0.3s;
+  cursor:pointer;
+}
+
+.menu-card:hover {
+  transform:translateY(-5px);
+  box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* ICON */
+.menu-icon {
+  font-size:40px;
+  margin-bottom:10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+
+  <!-- BRAND -->
+  <div class="brand-box text-center mb-4">
+    <img id="brandLogo" class="brand-img">
+    <div class="brand-title">Jadwal Pelajaran</div>
+    <div class="brand-sub">Anti Bentrok</div>
+  </div>
+
+  <!-- MENU -->
+  <a href="index.html">🏠 Beranda</a>
+  <a href="identitas.html">🏫 Identitas</a>
+  <a href="master.html" class="active">📚 Master Data</a>
+  <a href="jadwal.html">📅 Atur Jadwal</a>
+
+  <!-- TOMBOL DONASI -->
+  <a href="https://saweria.co/tetehstudio"
+     target="_blank"
+     class="btn btn-warning btn-sm">
+     💖 Donasi
+  </a>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+<h4 class="mb-4">📚 Master Data</h4>
+<p class="text-muted">Kelola data utama aplikasi jadwal</p>
+
+<div class="container mt-4">
+
+<div class="row justify-content-center g-4">
+
+  <!-- MAPEL -->
+  <div class="col-md-4">
+    <div class="menu-card" onclick="location.href='mapel.html'">
+      <div class="icon">📘</div>
+      <h5>Mata Pelajaran</h5>
+      <p>Kelola mata pelajaran</p>
+    </div>
+  </div>
+
+    <!-- GURU -->
+  <div class="col-md-4">
+    <div class="menu-card" onclick="location.href='guru.html'">
+      <div class="icon">👨‍🏫</div>
+      <h5>Data Guru</h5>
+      <p>Kelola daftar guru</p>
+    </div>
+  </div>
+
+  <!-- KELAS -->
+  <div class="col-md-4">
+    <div class="menu-card" onclick="location.href='kelas.html'">
+      <div class="icon">🏫</div>
+      <h5>Data Kelas</h5>
+      <p>Kelola kelas</p>
+    </div>
+  </div>
+
+</div>
+
+</div>
+
+</div>
+<script src="../js/app.js"></script>
+<script src="../js/dashboard.js"></script>
+</body>
+</html>

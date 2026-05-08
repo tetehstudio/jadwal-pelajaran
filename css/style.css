@@ -1,0 +1,428 @@
+/* ================= GLOBAL ================= */
+body {
+  background:#f3f6fb;
+  font-family: 'Segoe UI', sans-serif;
+  margin:0;
+}
+
+/* ================= SIDEBAR ================= */
+.sidebar {
+  width:240px;
+  height:100vh;
+  position:fixed;
+  left:0;
+  top:0;
+  background: linear-gradient(180deg,#0f9b8e,#1abc9c);
+  color:white;
+  padding:20px;
+  overflow-y:auto;
+}
+
+.sidebar h4 {
+  text-align:center;
+  margin-bottom:30px;
+}
+
+.sidebar a {
+  display:block;
+  padding:10px;
+  border-radius:8px;
+  color:white;
+  text-decoration:none;
+  margin-bottom:10px;
+  transition:0.3s;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+  background: rgba(255,255,255,0.2);
+  padding-left:15px;
+}
+
+/* ================= CONTENT ================= */
+.content {
+  margin-left:240px;
+  padding:20px;
+  width: calc(100% - 240px);
+  box-sizing:border-box;
+}
+
+/* ================= HEADER ================= */
+.header-modern {
+  background: linear-gradient(135deg,#0f9b8e,#1abc9c);
+  color:white;
+  border-radius:16px;
+  padding:15px 20px;
+}
+
+/* LOGO */
+.logo-modern {
+  width:60px;
+  height:60px;
+  border-radius:12px;
+  object-fit:cover;
+  background:white;
+  padding:5px;
+}
+
+/* ================= KEPSEK ================= */
+.kepsek-box {
+  min-width: 180px;
+  background: rgba(255,255,255,0.15);
+  padding: 15px;
+  border-radius: 12px;
+}
+
+.kepsek-icon {
+  font-size:45px;
+  margin-bottom:8px;
+}
+
+.kepsek-label {
+  font-size:12px;
+  opacity:0.8;
+  margin-bottom:4px;
+}
+
+.kepsek-nama {
+  font-size:14px;
+  font-weight:bold;
+}
+
+/* ================= CARD ================= */
+.card {
+  border-radius:12px;
+  width:100%;
+  overflow:hidden;
+  box-shadow:0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* ================= STATISTIK ================= */
+.stat-card {
+  background:white;
+  border-radius:12px;
+  padding:12px;
+  text-align:center;
+  transition:0.3s;
+}
+
+.stat-card:hover {
+  transform:translateY(-3px);
+}
+
+.stat-card .icon {
+  font-size:22px;
+  margin-bottom:5px;
+}
+
+.stat-card h3 {
+  font-size:18px;
+  margin:0;
+  font-weight:bold;
+}
+
+/* ================= CHART ================= */
+#chartStat {
+  max-height:150px !important;
+}
+
+/* ================= JADWAL ================= */
+#jadwalHariIni {
+  font-size:13px;
+}
+
+/* ================= GRID FIX ================= */
+.row {
+  margin-left:0;
+  margin-right:0;
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:768px){
+
+  .sidebar {
+    width:100%;
+    height:auto;
+    position:relative;
+  }
+
+  .content {
+    margin-left:0;
+    width:100%;
+  }
+
+  .header-modern .row {
+    text-align:center;
+  }
+
+  .kepsek-box {
+    margin-top:10px;
+  }
+
+}
+
+/* ================= FIX OVERFLOW DASHBOARD ================= */
+
+/* paksa semua isi content tidak keluar */
+.content {
+  margin-left:240px;
+  width: calc(100% - 240px);
+  max-width: calc(100% - 240px);
+  overflow-x:hidden;
+}
+
+/* cegah card melebar */
+.content .card {
+  width:100%;
+  max-width:100%;
+}
+
+/* bootstrap row sering bikin melebar */
+.content .row {
+  margin-left:0 !important;
+  margin-right:0 !important;
+}
+
+/* semua container harus ikut batas */
+.content > * {
+  max-width:100%;
+}
+
+/* canvas chart biar tidak liar */
+#chartStat {
+  width:100% !important;
+  max-width:100%;
+}
+
+/* ================= BRAND SIDEBAR ================= */
+
+.brand-box {
+  border-bottom:1px solid rgba(255,255,255,0.2);
+  padding-bottom:15px;
+}
+
+.brand-logo {
+  font-size:40px;
+  margin-bottom:10px;
+}
+
+.brand-title {
+  font-weight:bold;
+  font-size:16px;
+  letter-spacing:0.5px;
+}
+
+.brand-sub {
+  font-size:12px;
+  opacity:0.8;
+}
+
+/* HOVER MENU LEBIH HALUS */
+.sidebar a {
+  display:block;
+  padding:10px;
+  border-radius:8px;
+  color:white;
+  text-decoration:none;
+  margin-bottom:10px;
+  transition: all 0.3s ease;
+}
+
+.sidebar a:hover {
+  background: rgba(255,255,255,0.2);
+  padding-left:15px;
+}
+
+.sidebar a.active {
+  background: rgba(255,255,255,0.25);
+  font-weight:bold;
+}
+
+.brand-img{
+  width:60px;
+  height:60px;
+  object-fit:cover;
+  border-radius:12px;
+  margin-bottom:10px;
+}
+
+.jadwal-item{
+  background:#f8f9fa;
+  border-radius:10px;
+  transition:0.2s;
+}
+
+.jadwal-item:hover{
+  background:#e8f8f5;
+}
+
+.jadwal-item .badge{
+  font-size:12px;
+}
+
+/* ===== JADWAL MOBILE STYLE ===== */
+
+.jadwal-card{
+  display:flex;
+  align-items:center;
+  background:white;
+  border-radius:15px;
+  padding:15px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.08);
+  transition:0.2s;
+}
+
+.jadwal-card:hover{
+  transform:translateY(-2px);
+}
+
+/* kiri (jam) */
+.jadwal-left{
+  width:60px;
+  height:60px;
+  background:linear-gradient(135deg,#1abc9c,#16a085);
+  color:white;
+  border-radius:12px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  margin-right:15px;
+}
+
+.jam{
+  font-size:18px;
+  font-weight:bold;
+}
+
+.label{
+  font-size:10px;
+  opacity:0.8;
+}
+
+/* isi utama */
+.jadwal-main{
+  flex:1;
+}
+
+.mapel{
+  font-weight:bold;
+  font-size:15px;
+}
+
+.kelas{
+  font-size:12px;
+  color:#777;
+}
+
+/* GRID */
+.jadwal-grid-wrapper{
+  overflow-x:auto;
+}
+
+.jadwal-grid{
+  font-size:12px;
+  background:white;
+}
+
+.jadwal-grid th{
+  background:#1abc9c;
+  color:white;
+  font-size:12px;
+}
+
+.jam-col{
+  background:#f4f4f4;
+  font-weight:bold;
+  width:50px;
+}
+
+.cell-mapel{
+  height:50px;
+  vertical-align:middle;
+  cursor:pointer;
+  position:relative;
+}
+
+.mapel{
+  font-size:11px;
+  font-weight:600;
+}
+
+/* hover */
+.cell-mapel:hover{
+  background:#e8f8f5;
+  transform:scale(1.03);
+  transition:0.2s;
+}
+
+.kosong{
+  color:#ccc;
+}
+
+td[rowspan]{
+  background:#f8f9fa;
+  font-weight:bold;
+}
+
+/* 🔥 hover 1 grup FULL BARIS */
+tr.hover-group,
+tr.hover-group td{
+  background:#e8f8f5 !important;
+  box-shadow: inset 0 0 0 1px #1abc9c;
+}
+
+.nama-guru.hover-group,
+.hover-group .nama-guru {
+  background:#d1f2eb !important;
+}
+
+.header-card{
+  padding: 20px 30px; /* kiri kanan sama */
+}
+
+.box-kepsek{
+  min-width: 180px;
+  background: rgba(255,255,255,0.15);
+  padding: 15px;
+  border-radius: 12px;
+}
+
+/* RUNNING TEXT */
+.running-text{
+  width:100%;
+  overflow:hidden;
+  background:#0f9b8e;
+  color:white;
+  border-radius:10px;
+  margin-bottom:15px;
+}
+
+.running-content{
+  display:inline-block;
+  white-space:nowrap;
+  padding-left:100%;
+  animation: jalan 15s linear infinite;
+  font-weight:600;
+}
+
+.running-text:hover .running-content{
+  animation-play-state: paused;
+}
+
+@keyframes jalan{
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+/* PERBAIKI HEADER BIAR SIMETRIS */
+.header-modern{
+  padding:20px 30px; /* kiri kanan sama */
+}
+
+.kepsek-box{
+  text-align:center;
+  background: rgba(255,255,255,0.15);
+  padding:12px;
+  border-radius:12px;
+}

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Identitas Madrasah</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../css/style.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body {
+  background:#f3f6fb;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 240px;
+  height: 100vh;
+  position: fixed;
+  background: linear-gradient(180deg,#0f9b8e,#1abc9c);
+  color: white;
+  padding: 20px;
+}
+
+.sidebar a {
+  display:block;
+  padding:10px;
+  border-radius:8px;
+  color:white;
+  text-decoration:none;
+  margin-bottom:10px;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+  background: rgba(255,255,255,0.2);
+}
+
+/* CONTENT */
+.content {
+  margin-left:260px;
+  padding:20px;
+}
+
+/* CARD */
+.card-form {
+  background:white;
+  border-radius:15px;
+  padding:25px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* LOGO */
+.logo-preview {
+  width:100px;
+  height:100px;
+  object-fit:cover;
+  border-radius:10px;
+  border:2px dashed #ccc;
+}
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+
+  <!-- BRAND -->
+  <div class="brand-box text-center mb-4">
+    <img id="brandLogo" class="brand-img">
+    <div class="brand-title">Jadwal Pelajaran</div>
+    <div class="brand-sub">Anti Bentrok</div>
+  </div>
+
+  <!-- MENU -->
+  <a href="index.html">🏠 Beranda</a>
+  <a href="identitas.html" class="active">🏫 Identitas</a>
+  <a href="master.html">📚 Master Data</a>
+  <a href="jadwal.html">📅 Atur Jadwal</a>
+
+  <!-- TOMBOL DONASI -->
+  <a href="https://saweria.co/tetehstudio"
+     target="_blank"
+     class="btn btn-warning btn-sm">
+     💖 Donasi
+  </a>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+<h4 class="mb-3">🏫 Identitas Madrasah</h4>
+
+<div class="card-form">
+
+<div class="row g-3">
+
+<div class="col-md-6">
+<label>Nama Sekolah</label>
+<input id="nama" class="form-control">
+</div>
+
+<div class="col-md-6">
+<label>Tahun Ajaran</label>
+<input id="tahun" class="form-control">
+</div>
+
+<div class="col-md-12">
+<label>Alamat</label>
+<input id="alamat" class="form-control">
+</div>
+
+<div class="col-md-6">
+<label>Kepala Sekolah</label>
+<input id="kepsek" class="form-control">
+</div>
+
+<div class="col-md-6">
+<label>Upload Logo</label>
+<input type="file" id="logoInput" class="form-control" onchange="uploadLogo()">
+</div>
+
+<div class="col-md-12 text-center">
+<img id="previewLogo" class="logo-preview mt-2">
+</div>
+
+<div class="col-md-12">
+<button class="btn btn-success w-100 mt-3" onclick="simpan()">
+💾 Simpan Data
+</button>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="../js/app.js"></script>
+<script src="../js/identitas.js"></script>
+
+</body>
+</html>
