@@ -26,6 +26,18 @@ document.addEventListener("DOMContentLoaded", function(){
   setText("alamat", identitas.alamat || "-");
   setText("kepsek", identitas.kepsek || "-");
 
+  // 🔥 SAMAKAN DENGAN identitas.js
+  let namaSekolah = identitas.nama || "Madrasah";
+  let tahun = identitas.tahun || "2025-2026";
+  let alamat = identitas.alamat || "-";
+  let kepsek = identitas.kepsek || "-";
+
+  // tampilkan ke dashboard
+  document.getElementById("nama").innerText = namaSekolah;
+  document.getElementById("tahun").innerText = "Tahun: " + tahun;
+  document.getElementById("alamat").innerText = alamat;
+  document.getElementById("kepsek").innerText = kepsek;
+  
     // ================= RUNNING TEXT =================
   let runningText = document.getElementById("runningText");
 
