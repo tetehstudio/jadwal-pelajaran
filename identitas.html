@@ -9,8 +9,8 @@
 <meta name="theme-color" content="#16a085">
 <meta name="description" content="Aplikasi Jadwal Pelajaran Anti Bentrok">
 
-<link rel="icon" href="assets/logo.png">
-<link rel="stylesheet" href="css/style.css?v=2">
+<link rel="icon" href="../assets/logo.png">
+<link rel="stylesheet" href="../css/style.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
 
@@ -85,11 +85,15 @@
 <img id="previewLogo" class="logo-preview mt-2">
 </div>
 
-<div class="col-md-12">
-<button id="btnSimpan" class="btn btn-success">
-💾 Simpan Data
-</button>
-</div>
+<div class="d-flex justify-content-center gap-2 mt-3">
+
+  <button id="btnSimpan" class="btn btn-success">
+    💾 Simpan
+  </button>
+
+  <button onclick="resetData()" class="btn btn-danger">
+    🗑️ Reset Data
+  </button>
 
 </div>
 
@@ -97,8 +101,10 @@
 
 </div>
 
-<script src="js/app.js"></script>
-<script src="js/identitas.js"></script>
+</div>
+
+<script src="../js/app.js"></script>
+<script src="../js/identitas.js"></script>
 
 </body>
 </html>

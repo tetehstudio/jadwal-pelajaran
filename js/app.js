@@ -43,3 +43,23 @@ function toggleSidebar(){
 
 // 🔥 jadikan global
 window.toggleSidebar = toggleSidebar;
+
+// ================= RESET DATA =================
+
+function resetData(){
+
+  let yakin = confirm(
+    "Apakah Anda yakin ingin menghapus semua data aplikasi?"
+  );
+
+  if(!yakin) return;
+
+  localStorage.clear();
+
+  alert("✅ Semua data berhasil dihapus");
+
+  location.reload();
+}
+
+// global
+window.resetData = resetData;
