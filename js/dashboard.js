@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(){
+  if(!document.getElementById("totalGuru")) return;
 
   console.log("✅ Dashboard jalan");
 
@@ -24,6 +25,14 @@ document.addEventListener("DOMContentLoaded", function(){
   setText("tahun", "Tahun: " + (identitas.tahun || "-"));
   setText("alamat", identitas.alamat || "-");
   setText("kepsek", identitas.kepsek || "-");
+
+    // ================= RUNNING TEXT =================
+  let runningText = document.getElementById("runningText");
+
+  if(runningText){
+    runningText.innerText =
+      `📢 Jadwal Pelajaran Anti Bentrok ${identitas.nama || "Madrasah"} Tahun Pelajaran ${identitas.tahun || "2025-2026"}`;
+  }
 
   if(identitas.logo){
     let logo = document.getElementById("logo");
@@ -172,24 +181,3 @@ function tampilHariIni(){
   },100);
 }
 
-document.addEventListener("DOMContentLoaded", function(){
-
-  let identitas = JSON.parse(localStorage.getItem("identitas")) || {};
-
-  // 🔥 SAMAKAN DENGAN identitas.js
-  let namaSekolah = identitas.nama || "Madrasah";
-  let tahun = identitas.tahun || "2025-2026";
-  let alamat = identitas.alamat || "-";
-  let kepsek = identitas.kepsek || "-";
-
-  // tampilkan ke dashboard
-  document.getElementById("nama").innerText = namaSekolah;
-  document.getElementById("tahun").innerText = "Tahun: " + tahun;
-  document.getElementById("alamat").innerText = alamat;
-  document.getElementById("kepsek").innerText = kepsek;
-
-  // running text
-  let teks = `📢 Jadwal Pelajaran Anti Bentrok ${namaSekolah} Tahun Pelajaran ${tahun}`;
-  document.getElementById("runningText").innerText = teks;
-
-});

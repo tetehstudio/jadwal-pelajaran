@@ -21,3 +21,25 @@ document.addEventListener("DOMContentLoaded", function(){
   }
 
 });
+
+// ================= TOGGLE SIDEBAR MOBILE =================
+
+// ================= TOGGLE SIDEBAR =================
+
+function toggleSidebar(){
+
+  const sidebar = document.querySelector(".sidebar");
+  const overlay = document.querySelector(".overlay");
+
+  if(sidebar){
+    sidebar.classList.toggle("show");
+  }
+
+  if(overlay){
+    overlay.classList.toggle("show");
+  }
+
+}
+
+// 🔥 jadikan global
+window.toggleSidebar = toggleSidebar;

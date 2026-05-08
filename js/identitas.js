@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
   loadData();
 
-  let btn = document.querySelector("button");
+  let btn = document.getElementById("btnSimpan");
   if(btn){
     btn.addEventListener("click", simpan);
   }
