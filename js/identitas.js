@@ -47,7 +47,6 @@ if(previewLogo && data.logo){
 }
 
 alert(
-  "Aplikasi Jadwal Anti Bentrok menyatakan\n\n" +
   "✅ Data berhasil disimpan"
 );
 }
