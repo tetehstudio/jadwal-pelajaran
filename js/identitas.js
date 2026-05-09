@@ -46,7 +46,10 @@ if(previewLogo && data.logo){
   previewLogo.src = data.logo;
 }
 
-alert("✅ Data tersimpan");
+alert(
+  "Aplikasi Jadwal Anti Bentrok menyatakan\n\n" +
+  "✅ Data berhasil disimpan"
+);
 }
 
 function loadData(){
