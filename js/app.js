@@ -55,7 +55,6 @@ function resetData(){
   localStorage.clear();
 
   alert(
-  "Aplikasi Jadwal Anti Bentrok menyatakan\n\n" +
   "✅ Semua data berhasil dihapus"
   );
 
