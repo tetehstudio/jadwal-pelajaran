@@ -22,8 +22,6 @@ document.addEventListener("DOMContentLoaded", function(){
 
 });
 
-// ================= TOGGLE SIDEBAR MOBILE =================
-
 // ================= TOGGLE SIDEBAR =================
 
 function toggleSidebar(){
@@ -56,7 +54,10 @@ function resetData(){
 
   localStorage.clear();
 
-  alert("✅ Semua data berhasil dihapus");
+  alert(
+  "Aplikasi Jadwal Anti Bentrok menyatakan\n\n" +
+  "✅ Semua data berhasil dihapus"
+  );
 
   location.reload();
 }
