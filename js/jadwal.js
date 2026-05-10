@@ -198,49 +198,108 @@ function simpanJadwal(){
   let hari = mHari.value;
   let jam = parseInt(mJam.value);
   let kelas = mKelas.value;
-  let guruKode = mGuru.value;
+
+  let kodeAwal = mGuru.value;
   let mapel = mMapel.value;
+
   let jp = parseInt(mJP.value);
 
-  if(!guruKode || !mapel){
+  if(!kodeAwal || !mapel){
+
     notif.innerHTML = "❗ Pilih guru & mapel";
     return;
+
   }
+
+  // ================= CARI GURU TERPILIH =================
+  let semuaGuru =
+    JSON.parse(localStorage.getItem("guru")) || [];
+
+  let guruAwal =
+    semuaGuru.find(g => g.kode === kodeAwal);
+
+  if(!guruAwal){
+
+    alert("❌ Guru tidak ditemukan");
+    return;
+
+  }
+
+  // ================= CARI KODE SESUAI MAPEL =================
+  let guruFinal = semuaGuru.find(g => {
+
+    let listMapel = Array.isArray(g.mapel)
+      ? g.mapel
+      : [g.mapel];
+
+    return (
+      g.nama === guruAwal.nama &&
+      listMapel.includes(mapel)
+    );
+
+  });
+
+  let guruKode = guruFinal
+    ? guruFinal.kode
+    : kodeAwal;
 
   // 🚫 GURU DOUBLE DI KELAS YANG SAMA
   if(cekGuruDouble(hari, kelas, guruKode)){
+
     alert("❌ Guru sudah mengajar di kelas ini hari ini!");
     return;
+
   }
 
   // 🚫 CEK BENTROK
   for(let i=0;i<jp;i++){
-    let error = cekBentrok(hari, jam+i, kelas, guruKode);
+
+    let error =
+      cekBentrok(hari, jam+i, kelas, guruKode);
+
     if(error){
+
       alert(error);
       return;
+
     }
   }
 
-  // hapus slot lama
+  // ================= HAPUS SLOT LAMA =================
   jadwal = jadwal.filter(j =>
-    !(j.hari===hari && j.kelas===kelas && j.jam>=jam && j.jam<jam+jp)
+
+    !(j.hari===hari &&
+      j.kelas===kelas &&
+      j.jam>=jam &&
+      j.jam<jam+jp)
+
   );
 
-  // simpan
+  // ================= SIMPAN =================
   for(let i=0;i<jp;i++){
+
     jadwal.push({
+
       hari,
       jam: jam+i,
       kelas,
+
       guruKode,
       mapel
+
     });
+
   }
 
-  localStorage.setItem("jadwal", JSON.stringify(jadwal));
+  localStorage.setItem(
+    "jadwal",
+    JSON.stringify(jadwal)
+  );
 
-  bootstrap.Modal.getInstance(modalGuru).hide();
+  bootstrap.Modal
+    .getInstance(modalGuru)
+    .hide();
+
   notif.innerHTML = "";
 
   render();
@@ -345,49 +404,60 @@ function isiDropdownGuru(){
 
 function isiDropdownMapel(kode){
 
-  let guruData = JSON.parse(localStorage.getItem("guru")) || [];
+  let guruList = JSON.parse(localStorage.getItem("guru")) || [];
 
-  let guru = guruData.find(g => g.kode === kode);
+  // cari guru terpilih
+  let guruDipilih = guruList.find(g => g.kode === kode);
 
   let mMapel = document.getElementById("mMapel");
 
-  if(!guru || !mMapel){
-
-    mMapel.innerHTML = `
-      <option value="">Pilih Mapel</option>
-    `;
-
-    return;
-  }
-
-  // pastikan array
-  let semuaMapel = [];
-
-  if(Array.isArray(guru.mapel)){
-
-    semuaMapel = guru.mapel;
-
-  }else if(typeof guru.mapel === "string"){
-
-    semuaMapel = [guru.mapel];
-
-  }
-
-  // hapus duplikat + urut A-Z
-  semuaMapel = [...new Set(semuaMapel)]
-    .sort((a,b)=>a.localeCompare(b));
-
-  // render
+  // reset dropdown
   mMapel.innerHTML = `
     <option value="">Pilih Mapel</option>
+  `;
 
-    ${semuaMapel.map(m => `
+  if(!guruDipilih) return;
+
+  // ambil semua guru dengan nama sama
+  let semuaGuru = guruList.filter(
+    g => g.nama === guruDipilih.nama
+  );
+
+  // gabungkan semua mapel
+  let semuaMapel = [];
+
+  semuaGuru.forEach(g => {
+
+    let list = Array.isArray(g.mapel)
+      ? g.mapel
+      : [g.mapel];
+
+    list.forEach(m => {
+
+      if(m && !semuaMapel.includes(m)){
+        semuaMapel.push(m);
+      }
+
+    });
+
+  });
+
+  // urut A-Z
+  semuaMapel.sort((a,b)=>a.localeCompare(b));
+
+  // render
+  semuaMapel.forEach(m => {
+
+    mMapel.innerHTML += `
       <option value="${m}">
         ${m}
       </option>
-    `).join("")}
-  `;
+    `;
+
+  });
+
 }
+
 // ================= TOOLTIP CLEAN =================
 function destroyTooltip(){
   document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el=>{
@@ -684,6 +754,7 @@ function loadBrand(){
     logo.src = data.logo;
   }
 }
+
 // ================= GLOBAL BINDING =================
 window.hapusCell = hapusCell;
 window.tambahJam = tambahJam;
