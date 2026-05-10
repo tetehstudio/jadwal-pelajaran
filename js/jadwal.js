@@ -344,27 +344,50 @@ function isiDropdownGuru(){
 }
 
 function isiDropdownMapel(kode){
-  let data = JSON.parse(localStorage.getItem("guru")) || [];
 
-  let guru = data.find(g=>g.kode===kode);
+  let guruData = JSON.parse(localStorage.getItem("guru")) || [];
 
-  if(!guru){
-    mMapel.innerHTML = `<option value="">Pilih Mapel</option>`;
+  let guru = guruData.find(g => g.kode === kode);
+
+  let mMapel = document.getElementById("mMapel");
+
+  if(!guru || !mMapel){
+
+    mMapel.innerHTML = `
+      <option value="">Pilih Mapel</option>
+    `;
+
     return;
   }
 
-  let semuaMapel = data
-    .filter(g=>g.nama===guru.nama)
-    .flatMap(g=>g.mapel);
+  // pastikan array
+  let semuaMapel = [];
 
-  semuaMapel = [...new Set(semuaMapel)];
+  if(Array.isArray(guru.mapel)){
 
+    semuaMapel = guru.mapel;
+
+  }else if(typeof guru.mapel === "string"){
+
+    semuaMapel = [guru.mapel];
+
+  }
+
+  // hapus duplikat + urut A-Z
+  semuaMapel = [...new Set(semuaMapel)]
+    .sort((a,b)=>a.localeCompare(b));
+
+  // render
   mMapel.innerHTML = `
     <option value="">Pilih Mapel</option>
-    ${semuaMapel.map(m=>`<option value="${m}">${m}</option>`).join("")}
+
+    ${semuaMapel.map(m => `
+      <option value="${m}">
+        ${m}
+      </option>
+    `).join("")}
   `;
 }
-
 // ================= TOOLTIP CLEAN =================
 function destroyTooltip(){
   document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el=>{
